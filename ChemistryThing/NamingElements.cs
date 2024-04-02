@@ -16,10 +16,18 @@ namespace ChemistryThing
             if(a.isMetal && !b.isMetal)
             {
                 name += a.name;
+                //swap the charges
+                if(MathF.Abs(b.charge) != 1)
+                    name += Elements.Subscripts[(int)MathF.Abs(b.charge) - 1];
 
-                string temp = b.name.Substring(0, b.name.Length - 3) + "ide";
+                //add on the -ide naming
+                string temp = Elements.nonMetalNamings[b.index];
                 name += " ";
+
                 name += temp;
+                //swap the charges
+                if(MathF.Abs(a.charge) != 1)
+                    name += Elements.Subscripts[(int)MathF.Abs(a.charge) - 1];
                 return name;
             }
 

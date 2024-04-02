@@ -22,51 +22,107 @@ namespace ChemistryThing
         public static Element[] data =
             {
                 //Hydrogen will be positive in this case
-                new("Hydrogen", 1, false),
+                new("Hydrogen", 1, false, 0),
 
-                new("Lithium", -1, true),
-                new("Beryllium", -2, true),
-                new("Boron", -3, false),
-                new("Carbom", -4, false),
-                new("Nitrogen", -3, false),
-                new("Oxygen", -2, false),
-                new("Flourine", -1, false),
+                new("Lithium", -1, true, 1),
+                new("Beryllium", -2, true, 2),
+                new("Boron", -3, false, 3),
+                new("Carbon", -4, false, 4),
+                new("Nitrogen", -3, false, 5),
+                new("Oxygen", -2, false, 6),
+                new("Flourine", -1, false, 7),
                 
-                new("Sodium", -1, true),
-                new("Magnesium", -2, true),
-                new("Aluminum", -3, true),
-                new("Silicon", -4, false),
-                new("Phosphorus", -3, false),
-                new("Sulfur", -2, false),
-                new("Chlorine", -1, false),
+                new("Sodium", -1, true, 8),
+                new("Magnesium", -2, true, 9),
+                new("Aluminum", -3, true, 10),
+                new("Silicon", -4, false, 11),
+                new("Phosphorus", -3, false, 12),
+                new("Sulfur", -2, false, 13),
+                new("Chlorine", -1, false, 14),
 
-                new("Potassium", -1, true),
-                new("Calcium", -2, true),
-                new("Scandium", -3, true),
-                new("Titanium", -4, true),
-                new("Vanadium", -3, true),
-                new("Chromium", -2, true),
-                new("Maganese", -1, true),
+                new("Potassium", -1, true, 15),
+                new("Calcium", -2, true, 16),
+                new("Scandium", -3, true, 17),
+                new("Titanium", -4, true, 18),
+                new("Vanadium", -3, true, 19),
+                new("Chromium", -2, true, 20),
+                new("Maganese", -1, true, 21),
                 //iron will just be 3
-                new("Iron", -3, true),
-                new("Cobalt", -3, true),
-                new("Nickel", -2, true),
+                new("Iron", -3, true, 22),
+                new("Cobalt", -3, true, 23),
+                new("Nickel", -2, true, 24),
                 //copper will just be 2
-                new("Copper", -2, true),
-                new("Zinc", -2, true),
-                new("Gallium", -3, true),
-                new("Germanium", -4, true),
-                new("Arsenic", -3, false),
-                new("Selenium", -2, false),
-                new("Bromine", -1, false),
+                new("Copper", -2, true, 25),
+                new("Zinc", -2, true, 26),
+                new("Gallium", -3, true, 27),
+                new("Germanium", -4, true, 28),
+                new("Arsenic", -3, false, 29),
+                new("Selenium", -2, false, 30),
+                new("Bromine", -1, false, 31),
 
                 //just going to have silver, iodine, tin from this row
-                new("Silver", -1, true),
-                new("Tin", -4, true),
-                new("Iodine", -1, false),
+                new("Silver", -1, true, 32),
+                new("Tin", -4, true, 33),
+                new("Iodine", -1, false, 34),
 
 
             };
+
+
+        public static string[] nonMetalNamings =
+        {
+            "Hydride",
+
+            "",
+            "",
+            "Boride",
+            "Carbide",
+            "Nitride",
+            "Oxide",
+            "Flouride",
+
+            "",
+            "",
+            "",
+            "Silicide",
+            "Phosphide",
+            "Sulfide",
+            "Chloride",
+
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Bromide",
+
+            "Iodide"
+        };
+
+        public static string[] Subscripts =
+        {
+            "\u2081",
+            "\u2082",
+            "\u2083",
+            "\u2084",
+            "\u2085",
+            "\u2086",
+            "\u2087",
+            "\u2088",
+            "\u2089"
+        };
     }
 
     public class Element
@@ -74,12 +130,14 @@ namespace ChemistryThing
         public string name { get; set; }
         public int charge { get; set; }
         public bool isMetal { get; set; }
+        public int index { get; set; }
 
-        public Element(string name, int charge, bool isMetal)
+        public Element(string name, int charge, bool isMetal, int index)
         {
             this.name = name;
             this.charge = charge;
             this.isMetal = isMetal;
+            this.index = index;
         }
     }
 }
