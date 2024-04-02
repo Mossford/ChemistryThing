@@ -19,54 +19,55 @@ namespace ChemistryThing
         }
 
         //array for the data
-        public static Element[] data =
-            {
-                //Hydrogen will be positive in this case
-                new("Hydrogen", 1, false, 0),
+        public static Element[] data = 
+        {
+            new("Hydrogen", "H", 1, false, 0),
 
-                new("Lithium", -1, true, 1),
-                new("Beryllium", -2, true, 2),
-                new("Boron", -3, false, 3),
-                new("Carbon", -4, false, 4),
-                new("Nitrogen", -3, false, 5),
-                new("Oxygen", -2, false, 6),
-                new("Flourine", -1, false, 7),
-                
-                new("Sodium", -1, true, 8),
-                new("Magnesium", -2, true, 9),
-                new("Aluminum", -3, true, 10),
-                new("Silicon", -4, false, 11),
-                new("Phosphorus", -3, false, 12),
-                new("Sulfur", -2, false, 13),
-                new("Chlorine", -1, false, 14),
+            new("Lithium", "Li", -1, true, 1),
+            new("Beryllium", "Be", -2, true, 2),
+            new("Boron", "B", -3, false, 3),
+            new("Carbon", "C", -4, false, 4),
+            new("Nitrogen", "N", -3, false, 5),
+            new("Oxygen", "O", -2, false, 6),
+            new("Flourine", "F", -1, false, 7),
 
-                new("Potassium", -1, true, 15),
-                new("Calcium", -2, true, 16),
-                new("Scandium", -3, true, 17),
-                new("Titanium", -4, true, 18),
-                new("Vanadium", -3, true, 19),
-                new("Chromium", -2, true, 20),
-                new("Maganese", -1, true, 21),
-                //iron will just be 3
-                new("Iron", -3, true, 22),
-                new("Cobalt", -3, true, 23),
-                new("Nickel", -2, true, 24),
-                //copper will just be 2
-                new("Copper", -2, true, 25),
-                new("Zinc", -2, true, 26),
-                new("Gallium", -3, true, 27),
-                new("Germanium", -4, true, 28),
-                new("Arsenic", -3, false, 29),
-                new("Selenium", -2, false, 30),
-                new("Bromine", -1, false, 31),
+            new("Sodium", "Na", -1, true, 8),
+            new("Magnesium", "Mg", -2, true, 9),
+            new("Aluminum", "Al", -3, true, 10),
+            new("Silicon", "Si", -4, false, 11),
+            new("Phosphorus", "P", -3, false, 12),
+            new("Sulfur", "S", -2, false, 13),
+            new("Chlorine", "Cl", -1, false, 14),
 
-                //just going to have silver, iodine, tin from this row
-                new("Silver", -1, true, 32),
-                new("Tin", -4, true, 33),
-                new("Iodine", -1, false, 34),
+            new("Potassium", "K", -1, true, 15),
+            new("Calcium", "Ca", -2, true, 16),
+            new("Scandium", "Sc", -3, true, 17),
+            new("Titanium", "Ti", -4, true, 18),
+            new("Vanadium", "V", -3, true, 19),
+            new("Chromium", "Cr", -2, true, 20),
+            new("Maganese", "Mn", -1, true, 21),
+            //iron will just be 3
+            new("Iron", "Fe", -3, true, 22),
+            new("Cobalt", "Co", -3, true, 23),
+            new("Nickel", "Ni", -2, true, 24),
+            //copper will just be 2
+            new("Copper", "Cu", -2, true, 25),
+            new("Zinc", "Zn", -2, true, 26),
+            new("Gallium", "Ga", -3, true, 27),
+            new("Germanium", "Ge", -4, true, 28),
+            new("Arsenic", "As", -3, false, 29),
+            new("Selenium", "Se", -2, false, 30),
+            new("Bromine", "Br", -1, false, 31),
 
+            //just going to have silver, iodine, tin from this row
+            new("Silver", "Ag", -1, true, 32),
+            new("Tin", "Sn", -4, true, 33),
+            new("Iodine", "I", -1, false, 34),
 
-            };
+            // just going to have gold from this row
+            //gold will just be 3
+            new("Gold", "Au", -3, true, 35)
+        };
 
 
         public static string[] nonMetalNamings =
@@ -127,7 +128,7 @@ namespace ChemistryThing
         public static string[] AmountPrefixes =
         {
             "Mono", // 1
-            "Di", // 2
+            "Die", // 2
             "Tri", // 3
             "Tetra", // 4
             "Penta", // 5
@@ -136,22 +137,93 @@ namespace ChemistryThing
             "Octa", // 8
             "Nona", // 9
             "Deca" // 10
-        }
+        };
+
+        public static char[] vowels =
+        {
+            'a',
+            'e',
+            'i',
+            'o',
+            'u'
+        };
     }
 
     public class Element
     {
         public string name { get; set; }
+        public string symbol { get; set; }
         public int charge { get; set; }
         public bool isMetal { get; set; }
         public int index { get; set; }
 
-        public Element(string name, int charge, bool isMetal, int index)
+        public Element(string name, string symbol, int charge, bool isMetal, int index)
         {
             this.name = name;
+            this.symbol = symbol;
             this.charge = charge;
             this.isMetal = isMetal;
             this.index = index;
+        }
+    }
+
+    public class IonicMolucule
+    {
+        public string name { get; set; }
+        public string chemicalForm { get; set; }
+        public Element a { get; set; }
+        public Element b { get; set; }
+
+
+        public IonicMolucule(string name, string chemicalForm, Element a, Element b)
+        {
+            this.name = name;
+            this.chemicalForm = chemicalForm;
+            this.a = a;
+            this.b = b;
+        }
+
+        public IonicMolucule()
+        {
+            
+        }
+
+        public override string ToString()
+        {
+            return name + " " + chemicalForm;
+        }
+    }
+
+    public class MolecularMolucule
+    {
+        public string name { get; set; }
+        public string chemicalForm { get; set; }
+        public Element a { get; set; }
+        public Element b { get; set; }
+        public uint countA { get; set; }
+        public uint countB { get; set; }
+
+        //add on acid, oxyacid, and hydrate
+
+
+        public MolecularMolucule(string name, string chemicalForm, Element a, Element b, uint countA, uint countB)
+        {
+            this.name = name;
+            this.chemicalForm = chemicalForm;
+            this.a = a;
+            this.b = b;
+            this.countA = countA;
+            this.countB = countB;
+        }
+
+        public MolecularMolucule()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return name + " " + chemicalForm;
         }
     }
 }
