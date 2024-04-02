@@ -98,18 +98,28 @@ namespace ChemistryThing
                 //check if vowel is the same
                 for (int i = 0; i < Elements.vowels.Length; i++)
                 {
-                    if (Elements.AmountPrefixes[countElementA - 1][Elements.AmountPrefixes[countElementA - 1].Length - 1] == Elements.vowels[i])
+                    char c = Elements.vowels[i];
+                    char ending = Elements.AmountPrefixes[countElementA - 1][Elements.AmountPrefixes[countElementA - 1].Length - 1];
+                    char starting = Elements.nonMetalNamings[a.index].ToLower()[0];
+                    if (ending == c)
                     {
-                        name += Elements.AmountPrefixes[countElementA - 1].Substring(0, Elements.AmountPrefixes[countElementA - 1].Length - 1);
-                        name += a.name.ToLower();
-                        break;
-                    }
-                    if (i == Elements.vowels.Length - 1)
-                    {
-                        name += Elements.AmountPrefixes[countElementA - 1];
-                        //add on element name
-                        name += a.name;
-                        break;
+                        for (int g = 0; g < Elements.vowels.Length; g++)
+                        {
+                            char ch = Elements.vowels[g];
+                            if (starting == ch)
+                            {
+                                name += Elements.AmountPrefixes[countElementA - 1].Substring(0, Elements.AmountPrefixes[countElementA - 1].Length - 1);
+                                name += Elements.nonMetalNamings[a.index].ToLower();
+                                break;
+                            }
+                            if (g == Elements.vowels.Length - 1)
+                            {
+                                name += Elements.AmountPrefixes[countElementA - 1];
+                                //add on element name
+                                name += Elements.nonMetalNamings[a.index];
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -126,18 +136,28 @@ namespace ChemistryThing
                 //check if vowel is the same
                 for (int i = 0; i < Elements.vowels.Length; i++)
                 {
-                    if (Elements.AmountPrefixes[countElementB - 1][Elements.AmountPrefixes[countElementB - 1].Length - 1] == Elements.vowels[i])
+                    char c = Elements.vowels[i];
+                    char ending = Elements.AmountPrefixes[countElementB - 1][Elements.AmountPrefixes[countElementB - 1].Length - 1];
+                    char starting = Elements.nonMetalNamings[b.index].ToLower()[0];
+                    if (ending == c)
                     {
-                        name += Elements.AmountPrefixes[countElementB - 1].Substring(0, Elements.AmountPrefixes[countElementB - 1].Length - 1);
-                        name += Elements.nonMetalNamings[b.index].ToLower();
-                        break;
-                    }
-                    if(i == Elements.vowels.Length - 1)
-                    {
-                        name += Elements.AmountPrefixes[countElementB - 1];
-                        //add on element name
-                        name += Elements.nonMetalNamings[b.index];
-                        break;
+                        for (int g = 0; g < Elements.vowels.Length; g++)
+                        {
+                            char ch = Elements.vowels[g];
+                            if (starting == ch)
+                            {
+                                name += Elements.AmountPrefixes[countElementB - 1].Substring(0, Elements.AmountPrefixes[countElementB - 1].Length - 1);
+                                name += Elements.nonMetalNamings[b.index].ToLower();
+                                break;
+                            }
+                            if (g == Elements.vowels.Length - 1)
+                            {
+                                name += Elements.AmountPrefixes[countElementB - 1];
+                                //add on element name
+                                name += Elements.nonMetalNamings[b.index];
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -145,7 +165,7 @@ namespace ChemistryThing
             {
                 name += countElementB;
                 //add on element name
-                name += Elements.nonMetalNamings[b.index];
+                name += Elements.nonMetalNamings[b.index].ToLower();
             }
 
 
