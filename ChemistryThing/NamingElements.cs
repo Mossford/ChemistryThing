@@ -64,10 +64,9 @@ namespace ChemistryThing
             //add to the count of each element by 1
             //if the chargeA does not equal 0 then we still have charge left
             //start loop and add to the chargeACount by chargeA and add another A element
-            
 
-            uint countElementA = 1;
-            uint countElementB = 1;
+            uint countElementA = countA;
+            uint countElementB = countB;
             uint chargeCountA = (uint)MathF.Abs(a.charge) * countA;
             uint chargeCountB = (uint)MathF.Abs(b.charge) * countB;
 
@@ -142,6 +141,12 @@ namespace ChemistryThing
                     }
                 }
             }
+            else
+            {
+                name += countElementB;
+                //add on element name
+                name += Elements.nonMetalNamings[b.index];
+            }
 
 
             //check if same element and replace with its element name
@@ -155,16 +160,24 @@ namespace ChemistryThing
             {
                 chemicalForm += a.symbol;
                 //swap the charges
-                if (countElementA > 1 && countElementA <= 10)
+                if (countElementA > 1 && countElementA < 10)
                 {
                     chemicalForm += Elements.Subscripts[countElementA - 1];
+                }
+                else if(countElementA > 1)
+                {
+                    chemicalForm += countElementA;
                 }
 
                 chemicalForm += b.symbol;
                 //swap the charges
-                if (countElementB > 1 && countElementB <= 10)
+                if (countElementB > 1 && countElementB < 10)
                 {
                     chemicalForm += Elements.Subscripts[countElementB - 1];
+                }
+                else if (countElementA > 1)
+                {
+                    chemicalForm += countElementB;
                 }
             }
 
