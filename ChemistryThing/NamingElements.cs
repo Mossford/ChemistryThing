@@ -109,14 +109,14 @@ namespace ChemistryThing
                             if (starting == ch)
                             {
                                 name += Elements.AmountPrefixes[countElementA - 1].Substring(0, Elements.AmountPrefixes[countElementA - 1].Length - 1);
-                                name += Elements.nonMetalNamings[a.index].ToLower();
+                                name += a.name.ToLower();
                                 break;
                             }
                             if (g == Elements.vowels.Length - 1)
                             {
                                 name += Elements.AmountPrefixes[countElementA - 1];
                                 //add on element name
-                                name += Elements.nonMetalNamings[a.index].ToLower();
+                                name += a.name.ToLower();
                                 break;
                             }
                         }
