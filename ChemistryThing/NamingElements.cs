@@ -29,7 +29,15 @@ namespace ChemistryThing
                 if (MathF.Abs(b.charge) != 1)
                     chemicalForm += Elements.Subscripts[(int)MathF.Abs(b.charge) - 1];
 
+                if (b.isPoly)
+                {
+                    chemicalForm += "(";
+                }
                 chemicalForm += b.symbol;
+                if (b.isPoly)
+                {
+                    chemicalForm += ")";
+                }
                 //swap the charges
                 if (MathF.Abs(a.charge) != 1)
                     chemicalForm += Elements.Subscripts[(int)MathF.Abs(a.charge) - 1];

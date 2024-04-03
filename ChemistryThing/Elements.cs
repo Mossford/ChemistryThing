@@ -45,7 +45,7 @@ namespace ChemistryThing
             new("Titanium", "Ti", -4, true, 18),
             new("Vanadium", "V", -3, true, 19),
             new("Chromium", "Cr", -2, true, 20),
-            new("Maganese", "Mn", -1, true, 21),
+            new("Maganese", "Mn", -2, true, 21),
             //iron will just be 3
             new("Iron", "Fe", -3, true, 22),
             new("Cobalt", "Co", -3, true, 23),
@@ -84,7 +84,7 @@ namespace ChemistryThing
             new("Peroxide", "O₂", -2, false, true, 48),
             new("Silicate", "SiO₃", -2, false, true, 49),
             new("Sulfate", "SO₄", -2, false, true, 50),
-            new("Thiosulfate", "S2O3", -2, false, true, 51),
+            new("Thiosulfate", "S₂O₃", -2, false, true, 51),
             new("Posphate", "PO₄", -3, false, true, 52),
             //acts like a metal
             new("Ammonium", "NH₄", 1, true, true, 53)
@@ -172,7 +172,7 @@ namespace ChemistryThing
         public static string[] AmountPrefixes =
         {
             "Mono", // 1
-            "Die", // 2
+            "Di", // 2
             "Tri", // 3
             "Tetra", // 4
             "Penta", // 5
