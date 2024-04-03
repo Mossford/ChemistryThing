@@ -116,7 +116,7 @@ namespace ChemistryThing
                             {
                                 name += Elements.AmountPrefixes[countElementA - 1];
                                 //add on element name
-                                name += Elements.nonMetalNamings[a.index];
+                                name += Elements.nonMetalNamings[a.index].ToLower();
                                 break;
                             }
                         }
@@ -154,7 +154,7 @@ namespace ChemistryThing
                             {
                                 name += Elements.AmountPrefixes[countElementB - 1];
                                 //add on element name
-                                name += Elements.nonMetalNamings[b.index];
+                                name += Elements.nonMetalNamings[b.index].ToLower();
                                 break;
                             }
                         }
@@ -165,7 +165,7 @@ namespace ChemistryThing
             {
                 name += countElementB;
                 //add on element name
-                name += Elements.nonMetalNamings[b.index].ToLower();
+                name += Elements.nonMetalNamings[b.index];
             }
 
 
