@@ -93,7 +93,7 @@ namespace ChemistryThing
             }
 
             //add on prefix
-            if (countElementA > 1 && countElementA <= 10)
+            if (countElementA > 1 && countElementA <= 10 && !a.isPoly)
             {
                 //check if vowel is the same
                 for (int i = 0; i < Elements.vowels.Length; i++)
@@ -131,7 +131,7 @@ namespace ChemistryThing
             name += " ";
 
             //add on prefix
-            if (countElementB <= 10)
+            if (countElementB <= 10 && !b.isPoly)
             {
                 //check if vowel is the same
                 for (int i = 0; i < Elements.vowels.Length; i++)
@@ -163,7 +163,6 @@ namespace ChemistryThing
             }
             else
             {
-                name += countElementB;
                 //add on element name
                 name += Elements.nonMetalNamings[b.index];
             }
@@ -178,26 +177,34 @@ namespace ChemistryThing
             }
             else
             {
+                if (a.isPoly)
+                {
+                    chemicalForm += "(";
+                }
                 chemicalForm += a.symbol;
+                if (a.isPoly)
+                {
+                    chemicalForm += ")";
+                }
                 //swap the charges
                 if (countElementA > 1 && countElementA < 10)
                 {
                     chemicalForm += Elements.Subscripts[countElementA - 1];
                 }
-                else if(countElementA > 1)
-                {
-                    chemicalForm += countElementA;
-                }
 
+                if (b.isPoly)
+                {
+                    chemicalForm += "(";
+                }
                 chemicalForm += b.symbol;
+                if (b.isPoly)
+                {
+                    chemicalForm += ")";
+                }
                 //swap the charges
                 if (countElementB > 1 && countElementB < 10)
                 {
                     chemicalForm += Elements.Subscripts[countElementB - 1];
-                }
-                else if (countElementA > 1)
-                {
-                    chemicalForm += countElementB;
                 }
             }
 

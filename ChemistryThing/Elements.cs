@@ -66,7 +66,28 @@ namespace ChemistryThing
 
             // just going to have gold from this row
             //gold will just be 3
-            new("Gold", "Au", -3, true, 35)
+            new("Gold", "Au", -3, true, 35),
+
+            //polyatomic ions
+            new("Acetate", "C₂H₂O₂", -1, false, true, 36),
+            new("Clhorate", "ClO₃", -1, false, true, 37),
+            new("Iodate", "IO₃", -1, false, true, 38),
+            new("Bromate", "BrO₃", -1, false, true, 39),
+            new("Cynanide", "CN", -1, false, true, 40),
+            new("Hydroxide", "OH", -1, false, true, 41),
+            new("Nitrate", "NO₃", -1, false, true, 42),
+            new("Permanganate", "MnO₄", -1, false, true, 43),
+            new("Thiocyanate", "SCN", -1, false, true, 44),
+            new("Carbonate", "CO₃", -2, false, true, 45),
+            new("Chromate", "CrO₄", -2, false, true, 46),
+            new("Dichromate", "Cr₂O₇", -2, false, true, 47),
+            new("Peroxide", "O₂", -2, false, true, 48),
+            new("Silicate", "SiO₃", -2, false, true, 49),
+            new("Sulfate", "SO₄", -2, false, true, 50),
+            new("Thiosulfate", "S2O3", -2, false, true, 51),
+            new("Posphate", "PO₄", -3, false, true, 52),
+            //acts like a metal
+            new("Ammonium", "NH₄", 1, true, true, 53)
         };
 
 
@@ -109,7 +130,30 @@ namespace ChemistryThing
             "",
             "Bromide",
 
-            "Iodide"
+            "Iodide",
+
+            "",
+            "",
+
+            //polyatomic ions
+            "Acetate", 
+            "Clhorate",
+            "Iodate",
+            "Bromate", 
+            "Cynanide",
+            "Hydroxide",
+            "Nitrate", 
+            "Permanganate",
+            "Thiocyanate",
+            "Carbonate",
+            "Chromate",
+            "Dichromate",
+            "Peroxide",
+            "Silicate",
+            "Sulfate", 
+            "Thiosulfate",
+            "Posphate",
+            "",
         };
 
         public static string[] Subscripts =
@@ -155,6 +199,7 @@ namespace ChemistryThing
         public string symbol { get; set; }
         public int charge { get; set; }
         public bool isMetal { get; set; }
+        public bool isPoly { get; set; }
         public int index { get; set; }
 
         public Element(string name, string symbol, int charge, bool isMetal, int index)
@@ -163,6 +208,15 @@ namespace ChemistryThing
             this.symbol = symbol;
             this.charge = charge;
             this.isMetal = isMetal;
+            this.index = index;
+        }
+        public Element(string name, string symbol, int charge, bool isMetal, bool isPoly, int index)
+        {
+            this.name = name;
+            this.symbol = symbol;
+            this.charge = charge;
+            this.isMetal = isMetal;
+            this.isPoly = isPoly;
             this.index = index;
         }
     }

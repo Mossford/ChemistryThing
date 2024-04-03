@@ -18,7 +18,9 @@ namespace ChemistryThing
             Console.WriteLine(NamingElements.CreateIonic(Elements.data[16], Elements.data[13]));
             Console.WriteLine(NamingElements.CreateMolecular(Elements.data[12], Elements.data[6]));
             Console.WriteLine(NamingElements.CreateMolecular(Elements.data[4], Elements.data[0]));
-            Console.WriteLine(NamingElements.CreateMolecular(Elements.data[4], Elements.data[6]));
+            Console.WriteLine(NamingElements.CreateMolecular(Elements.data[4], Elements.data[46]));
+            Console.WriteLine(NamingElements.CreateMolecular(Elements.data[6], Elements.data[43]));
+            Console.WriteLine(NamingElements.CreateMolecular(Elements.data[13], Elements.data[48]));
 
             Console.ReadLine();
         }
