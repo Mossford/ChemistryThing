@@ -29,12 +29,12 @@ namespace ChemistryThing
                 if (MathF.Abs(b.charge) != 1)
                     chemicalForm += Elements.Subscripts[(int)MathF.Abs(b.charge) - 1];
 
-                if (b.isPoly)
+                if (b.isPoly && (int)MathF.Abs(a.charge) != 1)
                 {
                     chemicalForm += "(";
                 }
                 chemicalForm += b.symbol;
-                if (b.isPoly)
+                if (b.isPoly && (int)MathF.Abs(a.charge) != 1)
                 {
                     chemicalForm += ")";
                 }
@@ -185,12 +185,12 @@ namespace ChemistryThing
             }
             else
             {
-                if (a.isPoly)
+                if (a.isPoly && countElementA != 1)
                 {
                     chemicalForm += "(";
                 }
                 chemicalForm += a.symbol;
-                if (a.isPoly)
+                if (a.isPoly && countElementA != 1)
                 {
                     chemicalForm += ")";
                 }
@@ -200,12 +200,12 @@ namespace ChemistryThing
                     chemicalForm += Elements.Subscripts[countElementA - 1];
                 }
 
-                if (b.isPoly)
+                if (b.isPoly && countElementB != 1)
                 {
                     chemicalForm += "(";
                 }
                 chemicalForm += b.symbol;
-                if (b.isPoly)
+                if (b.isPoly && countElementB != 1)
                 {
                     chemicalForm += ")";
                 }
