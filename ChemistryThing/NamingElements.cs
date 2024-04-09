@@ -59,7 +59,7 @@ namespace ChemistryThing
         }
 
 
-        public static IonicMolucule CreateMolecular(Element a, Element b, uint countA = 1, uint countB = 1)
+        public static MolecularMolucule CreateMolecular(Element a, Element b, uint countA = 1, uint countB = 1)
         {
             string name = "";
             string chemicalForm = "";
@@ -101,7 +101,7 @@ namespace ChemistryThing
             }
 
             //add on prefix
-            if (countElementA > 1 && countElementA <= 10 && !a.isPoly)
+            if (countElementA > 1 && countElementA < 10 && !a.isPoly)
             {
                 //check if vowel is the same
                 for (int i = 0; i < Elements.vowels.Length; i++)
@@ -139,7 +139,7 @@ namespace ChemistryThing
             name += " ";
 
             //add on prefix
-            if (countElementB <= 10 && !b.isPoly)
+            if (countElementB < 10 && !b.isPoly)
             {
                 //check if vowel is the same
                 for (int i = 0; i < Elements.vowels.Length; i++)
@@ -216,7 +216,7 @@ namespace ChemistryThing
                 }
             }
 
-            return new(name, chemicalForm, a, b);
+            return new(name, chemicalForm, a, b, countElementA, countElementB);
         }
 
         public static string NameMolecular(IonicMolucule molucule)

@@ -97,8 +97,8 @@ namespace ChemistryThing
 
             "",
             "",
-            "Boride",
-            "Carbide",
+            "",
+            "Carbde",
             "Nitride",
             "Oxide",
             "Flouride",
@@ -118,22 +118,22 @@ namespace ChemistryThing
             "",
             "",
             "",
+            
             "",
             "",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "Bromide",
 
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+
+            "",
+            "",
             "Iodide",
-
-            "",
-            "",
 
             //polyatomic ions
             "Acetate", 

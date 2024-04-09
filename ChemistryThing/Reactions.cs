@@ -68,9 +68,9 @@ namespace ChemistryThing
                 for (int i = 0; i < Elements.nonMetalAcitivty.Length; i++)
                 {
                     //check what matches
-                    if(a.name == Elements.metalActivity[i])
+                    if(a.name == Elements.nonMetalAcitivty[i])
                         aPos = i;
-                    if(molucule.a.name == Elements.metalActivity[i])
+                    if(molucule.b.name == Elements.nonMetalAcitivty[i])
                         bPos = i;
                 }
 
@@ -101,12 +101,63 @@ namespace ChemistryThing
         public static string SingleDisplacement(Element a, MolecularMolucule molucule)
         {
             string rctStruct = "";
+            string rctStructChem = "";
 
             rctStruct += a.name;
             rctStruct += " + ";
             rctStruct += molucule.name;
+            rctStruct += " -> ";
 
-            return rctStruct;
+            rctStructChem += a.symbol;
+            rctStructChem += " + ";
+            rctStructChem += molucule.chemicalForm;
+            rctStructChem += " -> ";
+
+            //create new ionic molucule by taking the other element and swapping it if it is more reactive
+
+            if(a.isMetal)
+            {
+                //a element is a metal and cannot react with the molecular
+                rctStruct += "no reaction";
+                rctStructChem += "no reaction";
+            }
+            else
+            {
+                //a would swap with the non metal if more reactive
+                //check if more reactive
+                int aPos = -1;
+                int bPos = -1;
+                for (int i = 0; i < Elements.nonMetalAcitivty.Length; i++)
+                {
+                    //check what matches
+                    if(a.name == Elements.nonMetalAcitivty[i])
+                        aPos = i;
+                    if(molucule.b.name == Elements.nonMetalAcitivty[i])
+                        bPos = i;
+                }
+
+                //element a is less reactive than element b and we have no reaction
+                if(aPos > bPos && aPos != -1 && bPos != -1)
+                {
+                    rctStruct += "no reaction";
+                    rctStructChem += "no reaction";
+                }
+                else
+                {
+                    //will assume more reactive
+                    //now we can swap
+                    MolecularMolucule newMol = NamingElements.CreateMolecular(molucule.a, a);
+                    rctStruct += newMol.name;
+                    rctStruct += " + ";
+                    rctStruct += molucule.b.name;
+
+                    rctStructChem += newMol.chemicalForm;
+                    rctStructChem += " + ";
+                    rctStructChem += molucule.b.symbol;
+                }
+            }
+
+            return rctStruct + " \n" + rctStructChem;
         }
 
 
