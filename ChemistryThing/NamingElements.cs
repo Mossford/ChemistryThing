@@ -42,7 +42,7 @@ namespace ChemistryThing
                 if (MathF.Abs(a.charge) != 1)
                     chemicalForm += Elements.Subscripts[(int)MathF.Abs(a.charge) - 1];
 
-                return new(name, chemicalForm, a, b);
+                return new(name, chemicalForm, a, b, (uint)MathF.Abs(b.charge), (uint)MathF.Abs(a.charge));
             }
 
             throw new Exception("Elements could not form ionic molucule " + a.name + " and " + b.name);

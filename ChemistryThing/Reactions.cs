@@ -160,6 +160,18 @@ namespace ChemistryThing
             return rctStruct + " \n" + rctStructChem;
         }
 
+        public static string doubleDispacement(IonicMolucule a, IonicMolucule b)
+        {
+
+            //swap the positive elements
+            IonicMolucule ab = NamingElements.CreateIonic(b.a, a.b);
+            IonicMolucule ba = NamingElements.CreateIonic(a.a, b.b);
+        
+            //check solubility if it has a reaction
+
+            throw new NotImplementedException();
+        }
+
 
 
         public static int[] reactionBalancer(Element[] elements, int[] elementCounts, int seperator)
