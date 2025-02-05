@@ -9,6 +9,7 @@ namespace ChemistryThing
         //format is in main(connections(connections))
         //any element before an open bracket is deemed to be a main element where it will have anything after in the brackets connecting
         //any connection that closes the bracket will go back to the last connection to handle parts that go away from the main part of the molecule
+        //Order matters in the format and will go from top and back in a clockwise fashion
         //example for water is O(H2)
         //example for ethane is C(H3C(H3))
         //example for 2 MethylPentane is C(H3C(HC(H3)C(H2C(H3))))

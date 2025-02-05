@@ -16,7 +16,10 @@ namespace ChemistryThing
             //if branch off (reach closed bracket) go back to index from stack before and do check
 
             Stack<int> mainElementsIndexes = new Stack<int>();
-            Vector2 pastMainPosition = Vector2.Zero;
+            List<Vector2> mainElementPositions = new List<Vector2>();
+            List<int> mainElementDirections = new List<int>();
+            mainElementDirections.Add(0);
+            mainElementPositions.Add(Vector2.Zero);
             Vector2 currentPosition = position;
             int dir = 0;
             int i = 0;
@@ -51,27 +54,33 @@ namespace ChemistryThing
                         }
                         count = int.Parse(numStr);
                     }
-
-                    //Console.WriteLine(element + " " + count + " " + dir);
                     
                     //if we get a main element then switch positions
                     if (molecule.format[i] == '(')
                     {
+                        Vector2 direction = Vector2.Zero;
+                        
                         switch (dir)
                         {
                             case 0:
-                                currentPosition += -Vector2.UnitY * 40;
+                                direction = -Vector2.UnitY;
                                 break;
                             case 1:
-                                currentPosition += Vector2.UnitX * 40;
+                                direction = Vector2.UnitX;
                                 break;
                             case 2:
-                                currentPosition += Vector2.UnitY * 40;
+                                direction = Vector2.UnitY;
                                 break;
                             case 3:
-                                currentPosition += -Vector2.UnitX * 40;
+                                direction = -Vector2.UnitX;
                                 break;
                         }
+                        
+                        DrawBond(currentPosition + (direction * 40), currentPosition, dir);
+                        currentPosition += direction * 40;
+                        mainElementPositions.Add(currentPosition);
+                        mainElementDirections.Add(dir);
+                        
                         DrawElement(Vector2.Zero, currentPosition, element);
 
                         dir = 0;
@@ -102,8 +111,9 @@ namespace ChemistryThing
                                 }
 
                                 dir++;
-                                if (direction * 40 + currentPosition != pastMainPosition)
+                                if (direction * 40 + currentPosition != mainElementPositions[^2])
                                 {
+                                    DrawBond(currentPosition, direction * 40 + currentPosition, dir + 1);
                                     DrawElement(direction, currentPosition, element);
                                     break;
                                 }
@@ -114,7 +124,6 @@ namespace ChemistryThing
                                 DrawError(direction * 40 + currentPosition);
                             }
                         }
-                        pastMainPosition = currentPosition;
                     }
                 }
                 else
@@ -130,7 +139,16 @@ namespace ChemistryThing
                     if (molecule.format[i] == ')')
                     {
                         //change the position we go to but the parser will still go forward as thats the next main element we need to go to
-                        
+                        if (mainElementPositions.Count != 0 || mainElementDirections.Count != 0)
+                        {
+                            mainElementPositions.RemoveAt(mainElementPositions.Count - 1);
+                            mainElementDirections.RemoveAt(mainElementDirections.Count - 1);
+                            if (mainElementPositions.Count != 0 || mainElementDirections.Count != 0)
+                            {
+                                currentPosition = mainElementPositions[^1];
+                                dir = mainElementDirections[^1] - 1;
+                            }
+                        }
                     }
 
                     i++;
@@ -144,6 +162,15 @@ namespace ChemistryThing
             Raylib.DrawText(element, (int)tempPos.X, (int)tempPos.Y, 20, Color.White);
             //Raylib.DrawText(dir.ToString(), (int)dir.X * 38 + (int)position.X, (int)dir.Y * 40 + (int)position.Y, 10, Color.Red);
             //Raylib.DrawText(position.ToString(), (int)dir.X * 38 + (int)position.X, (int)dir.Y * 38 + (int)position.Y, 10, Color.Green);
+        }
+
+        static void DrawBond(Vector2 position, Vector2 pastPosition, int dir)
+        {
+            Vector2 pos = ((position - pastPosition) / 2) + pastPosition;
+            if(dir % 2 == 0)
+                Raylib.DrawRectangle((int)pos.X + 5, (int)pos.Y - 1, 3, 20, Color.Black);
+            else
+                Raylib.DrawRectangle((int)pos.X - 4, (int)pos.Y + 7, 20 , 3, Color.Black);
         }
 
         static void DrawError(Vector2 position)
