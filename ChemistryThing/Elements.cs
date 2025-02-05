@@ -15,9 +15,29 @@ namespace ChemistryThing
         public abstract int getCharge();
     }
 
+    public interface IMolecule
+    {
+        public abstract string getName();
+        public abstract string getFormat();
+        public abstract float getMass();
+        public abstract int getCharge();
+        public abstract Element[] getElements();
+    }
+
     public static class Elements
     {
 
+        public static string[] symbols = 
+        {
+            "H", "Li", "Be", "B", "C", "N", "O", "F",
+            "Na", "Mg", "Al", "Si", "P", "S", "Cl",
+            "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", 
+            "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", 
+            "As", "Se", "Br", "Ag", "Sn", "I", 
+            "Au"
+        };
+
+        
         //array for the data
         public static Element[] data =
         {
